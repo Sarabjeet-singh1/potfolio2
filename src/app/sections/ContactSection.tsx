@@ -25,10 +25,10 @@ export default function ContactSection({ containerStagger, itemFade, spring }: a
     if (!formRef.current) return;
     try {
       await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_3t9gqwt',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_x4pbj2o',
-        formRef.current!,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'egGxGLl1UvIRdXlWF'
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       setStatus("success");
       formRef.current.reset();
