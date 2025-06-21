@@ -30,9 +30,9 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects, containerStagger, itemFade, spring }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="flex flex-col justify-center items-center min-h-screen w-full snap-start p-8 sm:p-16 bg-transparent">
+    <section id="projects" className="flex flex-col justify-center items-center min-h-screen w-full snap-start py-4 sm:py-8 px-0 sm:px-8 bg-transparent">
       <motion.section
-        className="w-full max-w-5xl flex flex-col items-center"
+        className="w-full max-w-none sm:max-w-5xl flex flex-col items-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -57,7 +57,7 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
           Here are some of the things I&apos;ve built recently. Swipe or scroll horizontally to explore!
         </motion.p>
         <motion.div 
-          className="flex gap-8 w-full overflow-x-auto py-8 pb-12 pl-8 pr-8 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-8 w-full overflow-x-auto py-4 pb-12 px-4 sm:px-4 snap-x snap-mandatory scrollbar-hide"
           style={{ 
             WebkitOverflowScrolling: 'touch',
             scrollbarWidth: 'none',
@@ -79,9 +79,9 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
               }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               initial={{ opacity: 0, y: 40, scale: 0.85 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25, delay: 0.2 + i * 0.1 }}
+              transition={{ type: 'spring', stiffness: 600, damping: 20, delay: 0.2 + i * 0.1 }}
               viewport={{ once: true }}
-              className="min-w-[320px] max-w-xs md:min-w-[380px] md:max-w-sm snap-center backdrop-blur-lg bg-white/20 dark:bg-gray-900/30 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-xl p-7 flex flex-col gap-3 hover:shadow-2xl hover:border-indigo-400 transition-all duration-150 cursor-pointer relative overflow-hidden"
+              className="min-w-[320px] max-w-xs md:min-w-[380px] md:max-w-sm snap-center backdrop-blur-lg bg-white/20 dark:bg-gray-900/30 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-xl p-7 flex flex-col gap-3 hover:shadow-2xl hover:border-indigo-400 transition-all duration-100 cursor-pointer relative overflow-hidden"
             >
               <h3 className="font-bold text-2xl mb-2 text-indigo-300 drop-shadow">{project.title}</h3>
               <p className="text-gray-200 dark:text-gray-300 mb-2 text-base">{project.description}</p>
