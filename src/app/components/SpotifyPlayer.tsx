@@ -1,31 +1,50 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import SpotifyCard, { type SpotifyData } from './SpotifyCard';
 
 const SpotifyPlayer = () => {
   // Spotify data and modal state
   const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Fetch data only when the modal is about to open
-  const openSpotifyModal = async () => {
-    setIsModalOpen(true);
-    if (spotifyData) return; // Don't refetch if we already have data
-    setLoading(true);
+  const fetchData = async (isInitial: boolean) => {
+    if (isInitial) {
+      setLoading(true);
+    }
     try {
       const res = await fetch('/api/spotify');
       const result = await res.json();
       setSpotifyData(result);
     } catch (error) {
       console.error('Error fetching Spotify data:', error);
-      setSpotifyData({ isPlaying: false });
+      if (!spotifyData) setSpotifyData({ isPlaying: false });
     } finally {
-      setLoading(false);
+      if (isInitial) {
+        setLoading(false);
+      }
     }
+  };
+  
+  // Effect to fetch data periodically when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      // Fetch immediately with loading screen
+      fetchData(true);
+
+      // Then, fetch every 5 seconds without loading screen
+      const interval = setInterval(() => fetchData(false), 5000);
+
+      // Clean up the interval when the component unmounts or modal closes
+      return () => clearInterval(interval);
+    }
+  }, [isModalOpen]);
+
+  const openSpotifyModal = () => {
+    setIsModalOpen(true);
   };
 
   return (

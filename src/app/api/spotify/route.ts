@@ -6,6 +6,10 @@ import {
     USER_PROFILE_ENDPOINT 
 } from '@/lib/spotify';
 
+interface SpotifyArtist {
+    name: string;
+}
+
 const getNowPlaying = async (access_token: string) => {
   return fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
@@ -56,7 +60,7 @@ export async function GET() {
       const recentSong = songData.items[0].track;
       const isPlaying = false;
       const title = recentSong.name;
-      const artist = recentSong.artists.map((_artist: any) => _artist.name).join(', ');
+      const artist = recentSong.artists.map((_artist: SpotifyArtist) => _artist.name).join(', ');
       const album = recentSong.album.name;
       const albumImageUrl = recentSong.album.images[0].url;
       const songUrl = recentSong.external_urls.spotify;
@@ -80,7 +84,7 @@ export async function GET() {
 
     const isPlaying = song.is_playing;
     const title = song.item.name;
-    const artist = song.item.artists.map((_artist: any) => _artist.name).join(', ');
+    const artist = song.item.artists.map((_artist: SpotifyArtist) => _artist.name).join(', ');
     const album = song.item.album.name;
     const albumImageUrl = song.item.album.images[0].url;
     const songUrl = song.item.external_urls.spotify;
@@ -94,8 +98,10 @@ export async function GET() {
       title,
       profile: userProfile,
     });
-  } catch (error: any) {
+  } catch (error) {
+    // The error object can be of any type, so we check if it has a message property
+    const errorMessage = error instanceof Error ? error.message : 'Something went wrong';
     console.error(error);
-    return NextResponse.json({ isPlaying: false, error: error.message || 'Something went wrong' }, { status: 500 });
+    return NextResponse.json({ isPlaying: false, error: errorMessage }, { status: 500 });
   }
 } 
