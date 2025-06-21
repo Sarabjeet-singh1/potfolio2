@@ -30,7 +30,7 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects, containerStagger, itemFade, spring }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="flex flex-col justify-center items-center min-h-screen w-full snap-start p-6 sm:p-12 bg-transparent">
+    <section id="projects" className="flex flex-col justify-center items-center min-h-screen w-full snap-start p-8 sm:p-16 bg-transparent">
       <motion.section
         className="w-full max-w-5xl flex flex-col items-center"
         initial="hidden"
@@ -57,8 +57,12 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
           Here are some of the things I&apos;ve built recently. Swipe or scroll horizontally to explore!
         </motion.p>
         <motion.div 
-          className="flex gap-8 w-full overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-indigo-400/60 scrollbar-track-transparent"
-          style={{ WebkitOverflowScrolling: 'touch' }}
+          className="flex gap-8 w-full overflow-x-auto py-8 pb-12 pl-8 pr-8 snap-x snap-mandatory scrollbar-hide"
+          style={{ 
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}
           variants={containerStagger} 
           initial="hidden" 
           animate="visible"
@@ -67,12 +71,17 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
             <motion.div
               key={project.title}
               variants={itemFade}
-              whileHover={{ scale: 1.07, boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)", borderColor: "#6366f1" }}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.45)", 
+                borderColor: "#6366f1",
+                y: -8
+              }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               initial={{ opacity: 0, y: 40, scale: 0.85 }}
-              transition={{ ...spring, delay: 0.2 + i * 0.1 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 25, delay: 0.2 + i * 0.1 }}
               viewport={{ once: true }}
-              className="min-w-[320px] max-w-xs md:min-w-[380px] md:max-w-sm snap-center backdrop-blur-lg bg-white/20 dark:bg-gray-900/30 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-xl p-7 flex flex-col gap-3 hover:shadow-2xl hover:border-indigo-400 transition-all duration-300 cursor-pointer relative overflow-hidden"
+              className="min-w-[320px] max-w-xs md:min-w-[380px] md:max-w-sm snap-center backdrop-blur-lg bg-white/20 dark:bg-gray-900/30 border border-gray-300 dark:border-gray-700 rounded-2xl shadow-xl p-7 flex flex-col gap-3 hover:shadow-2xl hover:border-indigo-400 transition-all duration-150 cursor-pointer relative overflow-hidden"
             >
               <h3 className="font-bold text-2xl mb-2 text-indigo-300 drop-shadow">{project.title}</h3>
               <p className="text-gray-200 dark:text-gray-300 mb-2 text-base">{project.description}</p>
@@ -89,7 +98,7 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
               >
                 View Project
               </a>
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-indigo-400/20 rounded-full blur-2xl z-0 animate-pulse" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-400/20 rounded-full blur-2xl z-0 animate-pulse" />
             </motion.div>
           ))}
         </motion.div>

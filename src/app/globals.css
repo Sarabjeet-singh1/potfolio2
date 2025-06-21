@@ -45,3 +45,8 @@ html {
 .animate-fadein {
   animation: fadein 1s ease;
 }
+
+/* Hide scrollbar for webkit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
