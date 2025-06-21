@@ -64,6 +64,8 @@ const skills = [
   { name: "Node.js", description: "JavaScript runtime built on Chrome's V8 engine for server-side applications." },
   { name: "GitHub", description: "Platform for version control and collaboration using Git." },
   { name: "MongoDB", description: "NoSQL database for modern, scalable applications." },
+  { name: "Solana", description: "High-performance blockchain platform for decentralized applications." },
+  { name: "Solidity", description: "Programming language for writing smart contracts on Ethereum blockchain." },
 ];
 
 // Add spring transition for headings and cards
@@ -94,7 +96,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative z-10 text-gray-900 dark:text-white flex flex-col items-center h-screen overflow-y-scroll snap-y snap-mandatory">
+    <div className="relative z-10 text-gray-900 dark:text-white flex flex-col items-center min-h-screen overflow-y-auto snap-y snap-mandatory">
       <HomeSection />
       <ProjectsSection projects={projects} containerStagger={containerStagger} itemFade={itemFade} spring={spring} />
       <SkillsSection skills={skills} containerStagger={containerStagger} itemFade={itemFade} spring={spring} />

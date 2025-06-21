@@ -40,7 +40,7 @@ export default function HomeSection() {
           animate="visible"
           variants={itemFade}
         >
-          Full Stack Developer &amp; Tech Enthusiast
+          Mern Stack Developer &amp;  Web3 Developer
         </motion.p>
         <motion.p
           className="text-base text-gray-500 dark:text-gray-400"

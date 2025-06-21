@@ -57,20 +57,22 @@ export default function SkillsSection({ skills, containerStagger, itemFade, spri
                 <div className="w-6 h-6 sm:w-7 sm:h-7 mb-1 flex items-center justify-center rounded-full bg-indigo-400/20 text-indigo-400 text-base shadow-inner animate-float" aria-label={skill.name}>
                   {(() => {
                     const logoMap: Record<string, string> = {
-                      'JavaScript': 'javascript.svg',
-                      'React': 'react.svg',
-                      'TypeScript': 'typescript.svg',
-                      'Tailwind CSS': 'tailwind.svg',
-                      'Next.js': 'next.svg',
-                      'Redux': 'redux.svg',
-                      'Express.js': 'express.svg',
-                      'Node.js': 'nodejs.svg',
-                      'GitHub': 'github.svg',
-                      'MongoDB': 'mongodb.svg',
+                      'JavaScript': '/javascript.svg',
+                      'React': '/react.svg',
+                      'TypeScript': '/typescript.svg',
+                      'Tailwind CSS': '/tailwind.svg',
+                      'Next.js': '/next.svg',
+                      'Redux': '/redux.svg',
+                      'Express.js': '/express.svg',
+                      'Node.js': '/node.svg',
+                      'GitHub': '/github.svg',
+                      'MongoDB': '/mongodb.svg',
+                      'Solana': '/solana.svg',
+                      'Solidity': '/solidity.svg',
                     };
                     const logoFile = logoMap[skill.name];
                     if (logoFile) {
-                      return <img src={`/${logoFile}`} alt={skill.name} className="w-4 h-4 sm:w-5 sm:h-5" />;
+                      return <img src={logoFile} alt={skill.name} className="w-4 h-4 sm:w-5 sm:h-5" />;
                     }
                     return <span>💡</span>;
                   })()}
