@@ -11,10 +11,6 @@ interface ContactSectionProps {
       };
     };
   };
-  itemFade: {
-    hidden: { opacity: number; y: number };
-    visible: { opacity: number; y: number; transition: { duration: number } };
-  };
   spring: {
     type: 'spring';
     stiffness: number;
@@ -22,7 +18,7 @@ interface ContactSectionProps {
   };
 }
 
-export default function ContactSection({ containerStagger, itemFade, spring }: ContactSectionProps) {
+export default function ContactSection({ containerStagger, spring }: ContactSectionProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<string | null>(null);
 

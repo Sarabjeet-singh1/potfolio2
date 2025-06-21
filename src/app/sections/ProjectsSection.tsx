@@ -1,7 +1,34 @@
 "use client";
 import { motion } from "framer-motion";
 
-export default function ProjectsSection({ projects, containerStagger, itemFade, spring }: any) {
+interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  link: string;
+}
+
+interface ProjectsSectionProps {
+  projects: Project[];
+  containerStagger: {
+    visible: {
+      transition: {
+        staggerChildren: number;
+      };
+    };
+  };
+  itemFade: {
+    hidden: { opacity: number; y: number };
+    visible: { opacity: number; y: number; transition: { duration: number } };
+  };
+  spring: {
+    type: 'spring';
+    stiffness: number;
+    damping: number;
+  };
+}
+
+export default function ProjectsSection({ projects, containerStagger, itemFade, spring }: ProjectsSectionProps) {
   return (
     <section id="projects" className="flex flex-col justify-center items-center min-h-screen w-full snap-start p-6 sm:p-12 bg-transparent">
       <motion.section
@@ -27,7 +54,7 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
           transition={{ ...spring, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Here are some of the things I've built recently. Swipe or scroll horizontally to explore!
+          Here are some of the things I&apos;ve built recently. Swipe or scroll horizontally to explore!
         </motion.p>
         <motion.div 
           className="flex gap-8 w-full overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-indigo-400/60 scrollbar-track-transparent"
@@ -36,7 +63,7 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
           initial="hidden" 
           animate="visible"
         >
-          {projects.map((project: any, i: number) => (
+          {projects.map((project: Project, i: number) => (
             <motion.div
               key={project.title}
               variants={itemFade}

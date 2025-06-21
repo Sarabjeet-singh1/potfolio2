@@ -87,7 +87,7 @@ export default function Home() {
       <HomeSection />
       <ProjectsSection projects={projects} containerStagger={containerStagger} itemFade={itemFade} spring={spring} />
       <SkillsSection skills={skills} containerStagger={containerStagger} itemFade={itemFade} spring={spring} />
-      <ContactSection containerStagger={containerStagger} itemFade={itemFade} spring={spring} />
+      <ContactSection containerStagger={containerStagger} spring={spring} />
       {/* Scroll to Top Button */}
       {showScrollTop && (
         <button

@@ -1,7 +1,33 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-export default function SkillsSection({ skills, containerStagger, itemFade, spring }: any) {
+interface Skill {
+  name: string;
+  description: string;
+}
+
+interface SkillsSectionProps {
+  skills: Skill[];
+  containerStagger: {
+    visible: {
+      transition: {
+        staggerChildren: number;
+      };
+    };
+  };
+  itemFade: {
+    hidden: { opacity: number; y: number };
+    visible: { opacity: number; y: number; transition: { duration: number } };
+  };
+  spring: {
+    type: 'spring';
+    stiffness: number;
+    damping: number;
+  };
+}
+
+export default function SkillsSection({ skills, containerStagger, itemFade, spring }: SkillsSectionProps) {
   return (
     <section id="skills" className="flex flex-col justify-center items-center min-h-screen w-full snap-start p-4 sm:p-8 bg-transparent overflow-hidden">
       <motion.section
@@ -35,7 +61,7 @@ export default function SkillsSection({ skills, containerStagger, itemFade, spri
           initial="hidden" 
           animate="visible"
         >
-          {skills.map((skill: any, i: number) => (
+          {skills.map((skill: Skill, i: number) => (
             <a
               key={skill.name}
               href={`https://www.google.com/search?q=${encodeURIComponent(skill.name + ' technology')}`}
@@ -72,7 +98,15 @@ export default function SkillsSection({ skills, containerStagger, itemFade, spri
                     };
                     const logoFile = logoMap[skill.name];
                     if (logoFile) {
-                      return <img src={logoFile} alt={skill.name} className="w-4 h-4 sm:w-5 sm:h-5" />;
+                      return (
+                        <Image 
+                          src={logoFile} 
+                          alt={skill.name} 
+                          width={20} 
+                          height={20} 
+                          className="w-4 h-4 sm:w-5 sm:h-5"
+                        />
+                      );
                     }
                     return <span>💡</span>;
                   })()}
