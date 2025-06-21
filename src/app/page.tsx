@@ -5,8 +5,6 @@ import ProjectsSection from "./sections/ProjectsSection";
 import SkillsSection from "./sections/SkillsSection";
 import ContactSection from "./sections/ContactSection";
 
-const typewriterText = "Sarabjeet Singh";
-
 const containerStagger = {
   visible: {
     transition: {
