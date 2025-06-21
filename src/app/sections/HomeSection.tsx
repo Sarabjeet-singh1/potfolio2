@@ -22,7 +22,7 @@ const HomeSection = () => {
       className="min-h-screen w-full flex flex-col justify-center items-center gap-8 relative snap-start p-4"
     >
       <motion.div 
-        className="text-center"
+        className="flex flex-col items-center text-center"
         initial="hidden"
         animate="visible"
         variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
@@ -43,7 +43,7 @@ const HomeSection = () => {
             className="text-base text-gray-500 dark:text-gray-400"
             variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }}}
         >
-          I build dynamic and responsive web applications.
+          Passionate about building modern web applications and learning new technologies.
         </motion.p>
       </motion.div>
     </section>

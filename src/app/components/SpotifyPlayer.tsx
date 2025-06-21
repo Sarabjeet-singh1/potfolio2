@@ -6,53 +6,44 @@ import Image from 'next/image';
 import SpotifyCard, { type SpotifyData } from './SpotifyCard';
 
 const SpotifyPlayer = () => {
-  // Spotify data and modal state
   const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
-  const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchData = async (isInitial: boolean) => {
-    if (isInitial) {
-      setLoading(true);
-    }
+  const fetchData = async () => {
     try {
       const res = await fetch('/api/spotify');
-      const result = await res.json();
-      setSpotifyData(result);
+      setSpotifyData(await res.json());
     } catch (error) {
       console.error('Error fetching Spotify data:', error);
-      if (!spotifyData) setSpotifyData({ isPlaying: false });
-    } finally {
-      if (isInitial) {
-        setLoading(false);
+      // Set a default state on error only if there's no data yet
+      if (!spotifyData) {
+        setSpotifyData({ isPlaying: false });
       }
     }
   };
-  
-  // Effect to fetch data periodically when modal is open
+
+  // 1. Pre-load data as soon as the component is ready.
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // 2. Keep data fresh by re-fetching every 5 seconds, but only when the modal is open.
   useEffect(() => {
     if (isModalOpen) {
-      // Fetch immediately with loading screen
-      fetchData(true);
-
-      // Then, fetch every 5 seconds without loading screen
-      const interval = setInterval(() => fetchData(false), 5000);
-
-      // Clean up the interval when the component unmounts or modal closes
+      const interval = setInterval(fetchData, 5000);
       return () => clearInterval(interval);
     }
   }, [isModalOpen]);
 
-  const openSpotifyModal = () => {
-    setIsModalOpen(true);
-  };
+  // The loading state is now true only if the modal is open AND we don't have data yet.
+  const isLoading = isModalOpen && !spotifyData;
 
   return (
     <>
       {/* Floating Spotify Icon Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <button 
-            onClick={openSpotifyModal}
+            onClick={() => setIsModalOpen(true)}
             className="w-16 h-16 bg-zinc-900/80 backdrop-blur-md border border-zinc-700 rounded-full flex items-center justify-center group hover:border-green-500 transition-colors duration-300"
             aria-label="Show my Spotify status"
         >
@@ -78,8 +69,8 @@ const SpotifyPlayer = () => {
               onClick={(e) => e.stopPropagation()}
               className="flex flex-col items-center gap-6"
             >
-              <SpotifyCard loading={loading} data={spotifyData} />
-              {!loading && spotifyData?.profile && (
+              <SpotifyCard loading={isLoading} data={spotifyData} />
+              {!isLoading && spotifyData?.profile && (
                 <motion.a
                   href={spotifyData.profile.external_urls.spotify}
                   target="_blank"
