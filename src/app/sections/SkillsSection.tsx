@@ -80,7 +80,7 @@ export default function SkillsSection({ skills, containerStagger, itemFade, spri
                 viewport={{ once: true }}
                 className="relative z-10 bg-white/20 dark:bg-gray-900/30 border border-indigo-300/30 dark:border-indigo-700/40 rounded-2xl shadow-lg w-20 h-24 sm:w-24 sm:h-28 md:w-28 md:h-32 px-2 py-3 sm:px-3 sm:py-4 m-1 mb-4 flex flex-col items-center justify-center text-center hover:shadow-2xl hover:border-indigo-400 transition-all duration-150 cursor-pointer overflow-hidden"
               >
-                <div className="w-6 h-6 sm:w-7 sm:h-7 mb-1 flex items-center justify-center rounded-full bg-indigo-400/20 text-indigo-400 text-base shadow-inner animate-float" aria-label={skill.name}>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 mb-1 flex items-center justify-center text-indigo-400 text-base shadow-inner animate-float" aria-label={skill.name}>
                   {(() => {
                     const logoMap: Record<string, string> = {
                       'JavaScript': '/javascript.svg',
