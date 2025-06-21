@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import HomeSection from "./sections/HomeSection";
 import ProjectsSection from "./sections/ProjectsSection";
@@ -76,18 +75,6 @@ const spring = {
 };
 
 export default function Home() {
-  // Typewriter effect state
-  const [displayedName, setDisplayedName] = useState("");
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayedName(typewriterText.slice(0, i + 1));
-      i++;
-      if (i === typewriterText.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
   const [showScrollTop, setShowScrollTop] = useState(false);
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 200);
