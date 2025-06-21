@@ -26,16 +26,24 @@ export default function ContactSection({ containerStagger, spring }: ContactSect
     e.preventDefault();
     setStatus(null);
     if (!formRef.current) return;
+    
     try {
-      await emailjs.sendForm(
+      const response = await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         formRef.current,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
-      setStatus("success");
-      formRef.current.reset();
-    } catch {
+      
+      if (response.status === 200) {
+        setStatus("success");
+        formRef.current.reset();
+      } else {
+        setStatus("error");
+        console.error('EmailJS response:', response);
+      }
+    } catch (error) {
+      console.error('Error:', error);
       setStatus("error");
     }
   };
@@ -101,11 +109,11 @@ export default function ContactSection({ containerStagger, spring }: ContactSect
           >
             Send Message
           </button>
-          {status === "success" && (
-            <div className="text-green-500 text-center mt-2">Message sent successfully!</div>
+          {status === 'success' && (
+            <p className="text-green-500 text-center mt-4">Message sent successfully!</p>
           )}
-          {status === "error" && (
-            <div className="text-red-500 text-center mt-2">Something went wrong. Please try again.</div>
+          {status === 'error' && (
+            <p className="text-red-500 text-center mt-4">Failed to send message. Please check your form inputs and try again.</p>
           )}
         </form>
       </motion.section>

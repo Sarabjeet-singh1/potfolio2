@@ -37,8 +37,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="https://www.linkedin.com/in/sarabjeet-singh-79575b246?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-white transition group">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="group-hover:scale-110 transition-transform"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.79-1.75-1.76 0-.97.784-1.76 1.75-1.76s1.75.79 1.75 1.76c0 .97-.784 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z" fill="currentColor"/></svg>
               </a>
-              <a href="https://x.com/sarabjeet___?s=21" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white transition group">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="group-hover:scale-110 transition-transform"><path d="M22.46 5.924c-.793.352-1.645.59-2.54.698a4.48 4.48 0 0 0 1.963-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.2 9.03a12.72 12.72 0 0 1-9.24-4.686 4.48 4.48 0 0 0 1.387 5.98 4.47 4.47 0 0 1-2.03-.56v.057a4.48 4.48 0 0 0 3.59 4.393c-.37.1-.76.154-1.16.154-.28 0-.55-.027-.81-.077a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.54a12.67 12.67 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.78 0-.19-.01-.38-.02-.57a9.1 9.1 0 0 0 2.24-2.31z" fill="currentColor"/></svg>
+              <a href="https://x.com/sarabjeet___?s=21" target="_blank" rel="noopener noreferrer" aria-label="X" className="hover:text-white transition group">
+                <svg width="28" height="28" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="group-hover:scale-110 transition-transform">
+                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" fill="currentColor"/>
+                </svg>
               </a>
             </div>
             <div>&copy; {new Date().getFullYear()} Sarabjeet Singh. All rights reserved.</div>
