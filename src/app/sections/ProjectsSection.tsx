@@ -1,5 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
+import { useContext } from 'react';
+import { ThemeContext } from '../components/ClientThemeProvider';
 
 interface Project {
   title: string;
@@ -29,6 +31,8 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection({ projects, containerStagger, itemFade, spring }: ProjectsSectionProps) {
+  const themeCtx = useContext(ThemeContext);
+
   return (
     <section id="projects" className="flex flex-col justify-center items-center min-h-screen w-full snap-start py-4 sm:py-8 px-0 sm:px-8 bg-transparent">
       <motion.section
@@ -45,7 +49,11 @@ export default function ProjectsSection({ projects, containerStagger, itemFade, 
           transition={{ ...spring, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          Projects
+          {themeCtx?.theme === 'dark' ? (
+            <span className="text-white border-r-2 border-blue-500 pr-1 animate-pulse font-extrabold text-5xl sm:text-6xl">Projects</span>
+          ) : (
+            <span style={{ color: '#1f2937' }} className="border-r-2 border-blue-500 pr-1 animate-pulse font-extrabold text-5xl sm:text-6xl">Projects</span>
+          )}
         </motion.h2>
         <motion.p
           className="text-xl text-gray-400 dark:text-gray-300 mb-12 text-center max-w-2xl"

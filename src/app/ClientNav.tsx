@@ -66,7 +66,7 @@ export default function ClientNav() {
               {themeCtx.theme === 'dark' ? (
                 <Moon className="h-5 w-5" color="currentColor" />
               ) : (
-                <Sun className="h-5 w-5" color="currentColor" />
+                <Sun className="h-5 w-5" color="#facc15" />
               )}
             </button>
           )}
