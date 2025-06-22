@@ -50,4 +50,4 @@ const HomeSection = () => {
   );
 };
 
-export default HomeSection; 
+export default HomeSection;
