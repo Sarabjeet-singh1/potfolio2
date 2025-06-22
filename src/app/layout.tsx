@@ -1,8 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import ClientNav from "./ClientNav";
-import SpotifyPlayer from "./components/SpotifyPlayer";
 import ClientThemeProvider from "./components/ClientThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });

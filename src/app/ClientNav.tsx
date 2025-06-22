@@ -7,15 +7,7 @@ const sectionIds = ["home", "projects", "skills", "contact"];
 
 export default function ClientNav() {
   const [activeSection, setActiveSection] = useState("home");
-  const [theme, setTheme] = useState<'light' | 'dark'>("dark");
   const themeCtx = useContext(ThemeContext);
-
-  useEffect(() => {
-    setTheme('dark');
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', 'dark');
-    }
-  }, []);
 
   useEffect(() => {
     // Scroll to home section on initial load
@@ -53,7 +45,7 @@ export default function ClientNav() {
     <>
       <nav className="w-full flex justify-center items-center py-4 bg-white/80 dark:bg-gray-900/80 shadow-sm sticky top-0 z-50 backdrop-blur">
         <div className="flex gap-6 text-base font-medium flex-1 justify-center items-center">
-          {sectionIds.map((id, idx) => (
+          {sectionIds.map((id) => (
             <a
               key={id}
               href={`#${id}`}

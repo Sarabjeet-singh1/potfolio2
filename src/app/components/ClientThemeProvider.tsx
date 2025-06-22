@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import ClientNav from "../ClientNav";
 import SpotifyPlayer from "./SpotifyPlayer";
 
