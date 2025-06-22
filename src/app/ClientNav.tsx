@@ -60,7 +60,7 @@ export default function ClientNav() {
           {themeCtx && (
             <button
               onClick={themeCtx.toggleTheme}
-              className="ml-6 p-1 hover:scale-110 transition-all"
+              className="ml-0 p-1 hover:scale-110 transition-all"
               aria-label="Toggle light/dark mode"
             >
               {themeCtx.theme === 'dark' ? (
