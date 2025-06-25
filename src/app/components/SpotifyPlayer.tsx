@@ -47,7 +47,7 @@ const SpotifyPlayer = () => {
             className="w-12 h-12 bg-zinc-900/80 backdrop-blur-md border border-zinc-700 rounded-full flex items-center justify-center group hover:border-green-500 transition-colors duration-300"
             aria-label="Show my Spotify status"
         >
-            <Image src="/spotify.svg" alt="Spotify" width={20} height={20} className="group-hover:scale-110 transition-transform" />
+            <Image src="/spotify.svg" alt="Spotify" width={28} height={28} className="group-hover:scale-110 transition-transform" />
         </button>
       </div>
 
