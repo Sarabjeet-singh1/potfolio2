@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, createContext } from "react";
 import ClientNav from "../ClientNav";
-import SpotifyPlayer from "./SpotifyPlayer";
 
 export const ThemeContext = createContext<{
   theme: 'light' | 'dark';
@@ -77,7 +76,6 @@ export default function ClientThemeProvider({ children }: { children: React.Reac
             <div className="relative z-10">
               <ClientNav />
               <main>{children}</main>
-              <SpotifyPlayer />
             </div>
           </div>
         </div>
